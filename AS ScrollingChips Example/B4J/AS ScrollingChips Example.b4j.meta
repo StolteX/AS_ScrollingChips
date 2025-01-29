@@ -7,6 +7,6 @@ ModuleBreakpoints2=
 ModuleClosedNodes0=
 ModuleClosedNodes1=
 ModuleClosedNodes2=
-NavigationStack=Main,Process_Globals,8,0,B4XMainPage,Class_Globals,12,0,Visual Designer,frm_main.bjl,-100,6,B4XMainPage,Initialize,16,0,AS_ScrollingChips,ini_xclv,94,3,AS_ScrollingChips,Base_Resize,79,0
+NavigationStack=Visual Designer,frm_main.bjl,-100,6,AS_ScrollingChips,setMaxSelectionCount,399,5,AS_ScrollingChips,xclv_VisibleRangeChanged,397,0,AS_ScrollingChips,ClickedChip,714,6,AS_ScrollingChips,HandleSelection,714,6,AS_ScrollingChips,Class_Globals,76,6,AS_ScrollingChips,AddChip2List,236,0,B4XMainPage,B4XPage_Created,31,5,AS_ScrollingChips,xlbl_RemoveIcon_MouseClicked,689,0,AS_ScrollingChips,ini_props,134,4
 SelectedBuild=0
 VisibleModules=2,1

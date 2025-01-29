@@ -31,17 +31,25 @@ Private Sub B4XPage_Created (Root1 As B4XView)
 	Wait For B4XPage_Resize (Width As Int, Height As Int)	
 	#End If
 	
-	For i = 1 To 21 -1'21 -1
+	AS_ScrollingChips1.ChipPropertiesGlobal.Width = 30dip
+'	AS_ScrollingChips1.ChipPropertiesGlobal.BorderColor = xui.Color_Green
+'	AS_ScrollingChips1.ChipPropertiesGlobal.BorderSize = 2dip
+	'AS_ScrollingChips1.SelectionBorderColor = xui.Color_Red
+	
+	For i = 1 To 8 -1'21 -1
 		
 		AS_ScrollingChips1.ChipPropertiesGlobal.BackgroundColor = xui.Color_White
 		AS_ScrollingChips1.ChipPropertiesGlobal.TextColor = xui.Color_Black
 		AS_ScrollingChips1.AddChip("Test " & i,AS_ScrollingChips1.FontToBitmap(Chr(0xE0C8),True,30,xui.Color_Black),"")
+		'AS_ScrollingChips1.AddChip("Test " & i,Null,"")
 		'AS_ScrollingChips1.AddChip("#Test " & i,Null,"")
 		
 	Next
 	Sleep(0)
 	AS_ScrollingChips1.RefreshChips
 	
+
+
 End Sub
 
 'You can see the list of page related events in the B4XPagesManager object. The event name is B4XPage.
