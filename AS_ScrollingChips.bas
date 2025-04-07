@@ -54,6 +54,8 @@ V2.08
 	-BugFix on get Size - Has returned an incorrect value
 V2.09
 	-BugFixes
+V2.10
+	-New GetChip2 - Get the chip via the tag value of the item
 #End If
 
 #DesignerProperty: Key: SelectionMode, DisplayName: SelectionMode, FieldType: String, DefaultValue: None, List: None|Single|Multi
@@ -602,6 +604,20 @@ End Sub
 
 Public Sub GetChip(Index As Int) As ASScrollingChips_Chip
 	Return xclv.GetValue(Index).As(Map).Get("Chip")
+End Sub
+
+'Value = Tag
+Public Sub GetChip2(Value As Object) As ASScrollingChips_Chip
+	
+	For i = 0 To xclv.Size -1
+		
+		If xclv.GetValue(i) Is Map And xclv.GetValue(i).As(Map).Get("Chip").As(ASScrollingChips_Chip).Tag = Value Then
+			Return xclv.GetValue(i).As(Map).Get("Chip")
+		End If
+		
+	Next
+	
+	Return Null
 End Sub
 
 Public Sub getShowRemoveIcon As Boolean
