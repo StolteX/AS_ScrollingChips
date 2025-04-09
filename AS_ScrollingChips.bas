@@ -56,6 +56,8 @@ V2.09
 	-BugFixes
 V2.10
 	-New GetChip2 - Get the chip via the tag value of the item
+V2.11
+	-BugFix - The chips are now resized when you call RefreshChips, if you change text etc.
 #End If
 
 #DesignerProperty: Key: SelectionMode, DisplayName: SelectionMode, FieldType: String, DefaultValue: None, List: None|Single|Multi
@@ -279,14 +281,15 @@ Private Sub AddChipIntern(xpnl_Background As B4XView,ChipMap As Map)
 	Dim FontGap As Float = IIf(xui.IsB4J,6dip,0dip)
 	Dim TextWidth As Float =  MeasureTextWidth(Chip.Text,ChipProperties.xFont) + 5dip
 	
-	Dim Width As Float = TextWidth + FontGap + ChipProperties.TextGap*2 + IconHeightWidth + IIf(HaveIcon,IconGap*2,0) + RemoveIconWidthHeight + IIf(m_ShowRemoveIcon,IconGap*2,0)
-	
 	Dim BackgroundColor As Int = ChipProperties.BackgroundColor
 	Dim TextColor As Int = ChipProperties.TextColor
 	If ChipProperties.BorderSize = 2dip And (m_SelectionMode = "Single" Or m_SelectionMode = "Multi") Then
 		BackgroundColor = m_SelectionBackgroundColor
 		TextColor = m_SelectionTextColor
 	End If
+	
+	Dim Width As Float = TextWidth + FontGap + ChipProperties.TextGap*2 + IconHeightWidth + IIf(HaveIcon,IconGap*2,0) + RemoveIconWidthHeight + IIf(m_ShowRemoveIcon,IconGap*2,0)
+	xpnl_Background.Width = Width
 	
 	Dim xpnl_ChipBackground As B4XView = xui.CreatePanel("xpnl_ChipBackground")
 	xpnl_Background.AddView(xpnl_ChipBackground,xpnl_Background.Width/2 - Width/2,xpnl_Background.Height/2-ChipProperties.Height/2,Width,ChipProperties.Height)
@@ -330,6 +333,10 @@ Private Sub AddChipIntern(xpnl_Background As B4XView,ChipMap As Map)
 	Else
 		xlbl_RemoveIcon.Visible = False
 	End If
+	
+	xpnl_Background.Width = Width + m_GapBetween*2
+	xclv.ResizeItem(xclv.GetItemFromView(xpnl_Background),xpnl_Background.Width)
+	xpnl_ChipBackground.Left = xpnl_Background.Width/2 - xpnl_ChipBackground.Width/2
 	
 	CustomDrawChip(CreateASScrollingChips_CustomDraw(Chip,ChipProperties,CreateASScrollingChips_Views(xpnl_Background,xlbl_Text,xiv_Icon,xlbl_RemoveIcon)))
 	
